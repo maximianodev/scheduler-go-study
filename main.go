@@ -1,25 +1,11 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
-	"github.com/maximianodev/scheduler/models"
+	"github.com/maximianodev/scheduler/routes"
 )
 
-func getUsers(context *gin.Context) {
-	context.IndentedJSON(http.StatusOK, models.Users)
-}
-
-func getSchedules(context *gin.Context) {
-	context.IndentedJSON(http.StatusOK, models.Schedules)
-}
-
 func main() {
-	router := gin.Default()
-
-	router.GET("/users", getUsers)
-	router.GET("/schedules", getSchedules)
+	router := routes.Routes()
 
 	router.Run("localhost:8080")
 }
