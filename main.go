@@ -1,11 +1,17 @@
 package main
 
 import (
-	"github.com/maximianodev/scheduler/routes"
+	"github.com/gin-gonic/gin"
+	"github.com/maximianodev/scheduler/controllers"
 )
 
 func main() {
-	router := routes.Routes()
+	router := gin.Default()
+
+	router.GET("/users", controllers.GetUsersController)
+	router.GET("/users/:id", controllers.GetUserByIdController)
+
+	router.GET("/schedules", controllers.GetSchedulesController)
 
 	router.Run("localhost:8080")
 }

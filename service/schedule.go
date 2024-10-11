@@ -8,7 +8,7 @@ import (
 )
 
 func GetSchedulesService(context *gin.Context) {
-	data := clients.GetSchedules()
+	data := clients.GetAllSchedules()
 
 	context.IndentedJSON(http.StatusOK, data)
 }
