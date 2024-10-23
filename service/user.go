@@ -7,9 +7,9 @@ import (
 )
 
 func GetAllUsersService(context *gin.Context) *[]models.User {
-	return clients.GetAllUsers()
+	return clients.ListAllUsers()
 }
 
 func GetUserByIdService(userId string) *models.User {
-	return clients.GetUserById(userId)
+	return clients.FindUserById(userId)
 }

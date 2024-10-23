@@ -8,10 +8,11 @@ import (
 func main() {
 	router := gin.Default()
 
-	router.GET("/users", controllers.GetUsersController)
+	router.GET("/users", controllers.GetAllUsersController)
 	router.GET("/users/:id", controllers.GetUserByIdController)
 
-	router.GET("/schedules", controllers.GetSchedulesController)
+	router.GET("/schedules", controllers.GetAllSchedulesController)
+	router.GET("/schedules/:email", controllers.GetScheduleByEmailController)
 
 	router.Run("localhost:8080")
 }

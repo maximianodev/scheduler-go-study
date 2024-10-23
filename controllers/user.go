@@ -7,7 +7,7 @@ import (
 	"github.com/maximianodev/scheduler/service"
 )
 
-func GetUsersController(context *gin.Context) {
+func GetAllUsersController(context *gin.Context) {
 	users := service.GetAllUsersService(context)
 
 	context.IndentedJSON(http.StatusOK, users)

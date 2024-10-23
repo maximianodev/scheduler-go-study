@@ -1,14 +1,15 @@
 package service
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/maximianodev/scheduler/clients"
+	"github.com/maximianodev/scheduler/models"
 )
 
-func GetSchedulesService(context *gin.Context) {
-	data := clients.GetAllSchedules()
+func GetAllSchedulesService(context *gin.Context) *[]models.Schedule {
+	return clients.ListAllSchedules()
+}
 
-	context.IndentedJSON(http.StatusOK, data)
+func GetScheduleByEmailService(userEmail string) *[]models.Schedule {
+	return clients.ListScheduleByEmail(userEmail)
 }

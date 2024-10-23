@@ -4,31 +4,32 @@ import (
 	"github.com/maximianodev/scheduler/models"
 )
 
-var schedules []models.Schedule = []models.Schedule{
-	{ID: "1", UserID: "1", DateHour: "2023-04-10 10:00"},
-	{ID: "2", UserID: "2", DateHour: "2023-04-10 11:00"},
-	{ID: "3", UserID: "2", DateHour: "2023-04-20 12:00"},
+func ListAllUsers() *[]models.User {
+	return &models.Users
 }
 
-var users []models.User = []models.User{
-	{ID: "1", Name: "John Doe", Email: "john.doe@example.com", Phone: "123-456-7890"},
-	{ID: "2", Name: "Jane Doe", Email: "jane.doe@example.com", Phone: "987-654-3210"},
-}
-
-func GetAllSchedules() *[]models.Schedule {
-	return &schedules
-}
-
-func GetAllUsers() *[]models.User {
-	return &users
-}
-
-func GetUserById(id string) *models.User {
-	for _, user := range users {
+func FindUserById(id string) *models.User {
+	for _, user := range models.Users {
 		if user.ID == id {
 			return &user
 		}
 	}
 
 	return nil
+}
+
+func ListAllSchedules() *[]models.Schedule {
+	return &models.Schedules
+}
+
+func ListScheduleByEmail(email string) *[]models.Schedule {
+	var schedules []models.Schedule
+
+	for _, schedule := range models.Schedules {
+		if schedule.UserEmail == email {
+			schedules = append(schedules, schedule)
+		}
+	}
+
+	return &schedules
 }
